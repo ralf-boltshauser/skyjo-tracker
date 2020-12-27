@@ -15,6 +15,12 @@ export class ProbabilityCalculatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.initialize();
+  }
+
+  initialize() {
+    this.cards = [];
+    this.playedCards = 0; 
     for (var i = -2; i <= 12; i++) {
       var max = 10;
       if (i == -2) {
@@ -26,6 +32,17 @@ export class ProbabilityCalculatorComponent implements OnInit {
     }
 
     this.updateProbability();
+  }
+
+  decrease(val: number) {
+    
+    var element = this.cards.find(card => card.number == val);
+    if (element.amount - 1 >= 0) {
+      element.amount--;
+      this.cards[val + 2] = element;
+      this.playedCards--;
+      this.updateProbability();
+    }
   }
 
   increase(val: number) {
