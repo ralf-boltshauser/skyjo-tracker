@@ -1,0 +1,8 @@
+<div>
+    <h2>Probability Calculator</h2>
+    <div class="cards">
+        <div class="card" *ngFor="let card of cards">
+            <button (click)="increase(card.number)" class="bg-primary card" mat-raised-button><div style="position: absolute; background-color: red; height: 100%; top: 0; left: 0; opacity: 0.3;" [style.width]="card.percentage * 100 +'%'"></div>{{(card.number).toString()}}: {{card.amount}}/{{card.max}} {{card.percentage | percentagePipe}}</button>
+        </div>
+    </div>
+</div>
